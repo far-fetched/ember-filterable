@@ -2,11 +2,6 @@ import FilterPanel from '../models/filter-panel';
 import EmberObject from '@ember/object';
 import { isArray } from '@ember/array';
 import { isBlank } from '@ember/utils';
-import {
-  PropertyPresenceError,
-  InappropriateUnknownTypeError,
-  InappropriateTypeError
-} from '../errors/filter-panel-builder';
 
 export default EmberObject.reopenClass({
   REQUIRED_PROPS: [{
@@ -26,18 +21,18 @@ export default EmberObject.reopenClass({
 
   validatePresence(prop) {
     if (isBlank(this[prop.name])) {
-      throw new PropertyPresenceError({ params: { propName: prop.name } });
+      throw new Error('erro1');
     }
   },
 
   validateType(prop) {
     if (typeof prop.type === 'string' ) {
       if (typeof this[prop.name] !== prop.type) {
-        throw new InappropriateTypeError({ params: { propName: prop.name, type: prop.type } });
+        throw new Error('erro2');
       }
     } else {
       if (!(prop.type(this[prop.name]))) {
-        throw new InappropriateUnknownTypeError({ params: { propName: prop.name } });
+        throw new Error('erro3');
       }
     }
   },

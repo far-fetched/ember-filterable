@@ -1,5 +1,4 @@
 import EmberObject from '@ember/object';
-import { NoSpecifiedStrategyError } from '../errors/filter-interpreter';
 
 export default EmberObject.extend({
   init() {
@@ -13,7 +12,7 @@ export default EmberObject.extend({
 
   validateStrategy() {
     if (!this.strategyFn) {
-      throw new NoSpecifiedStrategyError();
+      throw new Error('erro4');
     }
   },
 

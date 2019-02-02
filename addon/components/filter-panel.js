@@ -29,18 +29,5 @@ export default Component.extend(Filterable, {
       .withOnFilter(this.get('onFilter'))
       .setStrategy('atLeastOneFilterTrue')
       .build();
-  }),
-
-  inputColumnSize: computed('currentFilter', function() {
-    return (12 / this.currentFilter.inputs.length);
-  }),
-
-  actions: {
-    onClickButtonAddFilter(filter) {
-      filter.addValue();
-    },
-    onRemoveFilter(filter, value) {
-      filter.removeValue(value);
-    }
-  }
+  })
 });
